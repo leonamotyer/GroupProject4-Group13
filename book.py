@@ -1,6 +1,6 @@
 class Book:
 
-    
+    #Constructor
     def __init__(self, isbn, title, author, genre, availability):
         self.title = title
         self.author = author
