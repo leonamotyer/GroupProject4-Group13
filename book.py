@@ -1,50 +1,49 @@
 class Book:
-
-    #Constructor
     def __init__(self, isbn, title, author, genre, availability):
-        self.title = title
-        self.author = author
-        self.availability = availability
-        self.isbn = isbn
-        self.genre = genre
-     
-        
-    #Getters
-    def getisbn(self):
-        return self.isbn
+        self.__isbn = isbn
+        self.__title = title
+        self.__author = author
+        self.__genre = genre
+        self.__availability = availability
+
+    def get_isbn(self):
+        return self.__isbn
+
+    def get_title(self):
+        return self.__title
+
+    def get_author(self):
+        return self.__author
+
+    def get_genre(self):
+        return self.__genre
+
+    def get_genre_name(self):
+        genre_list = ["Romance", "Mystery", "Science Fiction", "Thriller", "Young Adult", "Children’s Fiction", "Self-help", "Fantasy", "Historical Fiction", "Poetry"]
+        return genre_list[self.__genre]
+
+    def get_availability(self):
+        return self.__availability
+
+    def borrow_it(self):
+        self.__availability = False
+
+    def return_it(self):
+        self.__availability = True
+
+    def set_isbn(self, isbn):
+        self.__isbn = isbn
+
+    def set_title(self, title):
+        self.__title = title
+
+    def set_author(self, author):
+        self.__author = author
+
+    def set_genre(self, genre):
+        self.__genre = genre
+
+    def __str__(self):
+        return "{:14s} {:25s} {:25s} {:20s} {:s}".format(self.__isbn, self.__title,
+            self.__author, self.get_genre_name(), str(self.__availability))
     
-    def getTitle(self):
-        return self.title
-    
-    def getAuthor(self):
-        return self.author
-    
-    def getGenre(self):
-        return self.genre
-    
-    def getLocation(self):
-        return self.availability
-    #setters
-    def setisbn(self, isbn):
-        self.isbn = isbn
-        
-    def setTitle(self, title):
-        self.title = title
-        
-    def setAuthor(self, author):
-        self.author = author
-    
-    def setGenre(self, genre):
-        self.genre = genre
-        
-    def setLocation(self, location):
-        self.availability = location
-        
-    def display(self):
-        print(f'ISBN: {self.isbn}\nTitle: {self.title}\nAuthor: {self.author}\nGenre: {self.genre}\nAvailability: {self.availability}')
-    
-    
-    def printAll(self, catalogue):
-        print(f'{"ISBN":<15} {"Title":<30} {"Author":<20} {"Genre":<20} {"Availability":<10}')
-        for book in catalogue:
-            print(f'{book.isbn:<15} {book.title:<30} {book.author:<20} {book.genre:<20} {book.availability:<10}')
