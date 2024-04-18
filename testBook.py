@@ -13,7 +13,7 @@ def main():
     
     bookThree = Book(isbn = '978-0394800165', title = 'Green Eggs and Ham', author = 'Dr. Seuss', genre = 'Childrens Fiction', availability = 'Available')
     catalogue.append(bookThree) 
-    print(bookThree.printAll(Book.catalogue))
+    print(bookThree.print_all(Book.catalogue))
 
 def search(catalogue, searchInput):#needs more work
     if searchInput in catalogue:
