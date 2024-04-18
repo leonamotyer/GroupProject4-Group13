@@ -38,10 +38,16 @@ def print_books():
     pass
 
 def save_books():
-    pass
+    print("Book catalog has been saved")
 
 def main():
+    selection = print_menu()
     print_menu()
+    if selection == 0:
+        print("--Exit The System-- ")
+        save_books()
+        print("Good Bye!")
+        exit()
 
 if __name__ == "__main__":
     main()
