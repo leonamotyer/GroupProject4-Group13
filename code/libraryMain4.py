@@ -1,9 +1,26 @@
+#Group Project 4 
+#version 1.0
+#Authors: Grace, Leona, Jose, Mahdi
+#Library Book cataloug system
+#Purpose: Design a library book catalog system that will implement the following features;
+#storing and loading books information into/from a file.
+#Searching for a book.
+#Borrowing a book.
+#Returning a book.
+#Adding a new book.
+#Removing a book.
+#Displaying a list of books.
+#Saving the book catalog.
+
 from book import Book
 
-def load_books():
-    pass
+# loading a list of books from a file
+def load_books(): #Grace
+    book_list = []
+    return book_list
 
-def print_menu():
+#printing the options menu
+def print_menu(): #Leona
     library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book"}
     print("Welcome to the Library\n")
     print(f"1. {library_menu.get(1)}")
@@ -16,35 +33,49 @@ def print_menu():
         print_menu()
     return selection
 
-def search_books():
-    print("Search for a book")
+#searching for a book
+def search_books(search_input, book_list): #Grace
+    print("Search for a book sucessfully called")
+    search_result = []
+    return search_result
+    
+#borrowing a book
+def borrow_book(book_list): #Leona
+    borrow_isbn = int(input("Enter a book ISBN: "))
+    find_book_by_isbn(borrow_isbn)
 
-def borrow_book():
-    print("Borrow a book")
+#finding a book by ISBN
+def find_book_by_isbn(book_list): #Grace
+    if Book.isbn in book_list:
+        return Book
 
-def find_book_by_isbn():
-    pass
+#returning a book
+def return_book(book_list): #Jose
+    print("Return a book sucessfully called")
 
-def return_book():
-    print("Return a book")
+#adding a book
+def add_book(): #Mahdi
+    print("Add a book sucessfully called")
 
-def add_book():
-    pass
+#removing a book
+def remove_book(): #Jose
+    print("Remove a book sucessfully called")
 
-def remove_book():
-    pass
+#displaying a list of books
+def print_books(): #Mahdi
+    print("Print books sucessfully called")
 
-def print_books():
-    pass
-
-def save_books():
+#saving the book catalog to a file
+def save_books(): #Jose
     print("Book catalog has been saved")
-
-def main():
+#main function for program
+def main(): #Mahdi
+    book_list =load_books()
     selection = print_menu()
     while selection != 0:
         if selection == 1:
-            search_books()
+            search_input = input("Search for a book: ")
+            search_books(search_input)
         elif selection == 2:
             borrow_book()
         elif selection == 3:
@@ -53,5 +84,6 @@ def main():
         print("--Exit The System-- ")
         save_books()
         print("Good Bye!")
+#calling main function to begin program        
 if __name__ == "__main__":
     main()
