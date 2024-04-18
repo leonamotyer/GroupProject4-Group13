@@ -1,10 +1,20 @@
-import book
+from book import Book
 
 def load_books():
     pass
 
 def print_menu():
-    pass
+    library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book"}
+    print("Welcome to the Library\n")
+    print(f"1. {library_menu.get(1)}")
+    print(f"2. {library_menu.get(2)}")
+    print(f"3. {library_menu.get(3)}")
+    print(f"0. {library_menu.get(0)}\n")    
+    selection = input("Enter your selection: ")
+    if selection not in library_menu.keys():
+        print("Invalid option. Please try again.")
+        print_menu()
+    return selection
 
 def search_books():
     pass
@@ -31,7 +41,7 @@ def save_books():
     pass
 
 def main():
-    pass
+    print_menu()
 
 if __name__ == "__main__":
     main()
