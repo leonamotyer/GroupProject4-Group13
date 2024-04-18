@@ -31,10 +31,15 @@ class Book:
         return self.author
     
     def get_genre_name(self):
+        
         return self.genre
     
     def get_availability(self):
-        return self.availability
+        if self.availability == True:
+            return "Available"
+        else:
+            return "Borrowed"
+        
     #setters
     def set_isbn(self, isbn):
         self.isbn = isbn
@@ -51,9 +56,8 @@ class Book:
     def borrow_it(self):
         self.availability = "Borrowed"
             
-    def return_it(self, location):
-        self.availability = location
-        location = "Available"
+    def return_it(self):
+        self.availability = "Available"
         
     def display(self):
         print(f'ISBN: {self.isbn}\nTitle: {self.title}\nAuthor: {self.author}\nGenre: {self.genre}\nAvailability: {self.availability}')
@@ -62,4 +66,4 @@ class Book:
     def print_all(self, catalogue):
         print(f'{"ISBN":<15} {"Title":<30} {"Author":<20} {"Genre":<20} {"Availability":<10}')
         for book in catalogue:
-            print(f'{book.isbn:<15} {book.title:<30} {book.author:<20} {book.genre:<20} {book.availability:<10}')
+            print(f'{book.get_isbn():<15} {book.get_title():<30} {book.get_author():<20} {book.get_genre():<20} {book.get_availability():<10}')
