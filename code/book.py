@@ -31,7 +31,6 @@ class Book:
         return self.author
     
     def get_genre_name(self):
-        
         return self.genre
     
     def get_availability(self):
@@ -64,6 +63,11 @@ class Book:
     
     
     def print_all(self, catalogue):
-        print(f'{"ISBN":<15} {"Title":<30} {"Author":<20} {"Genre":<20} {"Availability":<10}')
+        print(f'{"ISBN":<16} {"Title":<30} {"Author":<21} {"Genre":<21} {"Availability":<11}')
         for book in catalogue:
             print(f'{book.get_isbn():<15} {book.get_title():<30} {book.get_author():<20} {book.get_genre():<20} {book.get_availability():<10}')
+            
+    def __str__(self):
+        results =  f"{self.isbn:<15} {self.title:<30} {self.author:<20} {self.genre:<20} {self.availability:<10}"
+   
+        return results
