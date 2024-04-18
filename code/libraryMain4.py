@@ -10,23 +10,23 @@ def print_menu():
     print(f"2. {library_menu.get(2)}")
     print(f"3. {library_menu.get(3)}")
     print(f"0. {library_menu.get(0)}\n")    
-    selection = input("Enter your selection: ")
+    selection = int(input("Enter your selection: "))
     if selection not in library_menu.keys():
         print("Invalid option. Please try again.")
         print_menu()
     return selection
 
 def search_books():
-    pass
+    print("Search for a book")
 
 def borrow_book():
-    pass
+    print("Borrow a book")
 
 def find_book_by_isbn():
     pass
 
 def return_book():
-    pass
+    print("Return a book")
 
 def add_book():
     pass
@@ -42,12 +42,16 @@ def save_books():
 
 def main():
     selection = print_menu()
-    print_menu()
+    while selection != 0:
+        if selection == 1:
+            search_books()
+        elif selection == 2:
+            borrow_book()
+        elif selection == 3:
+            return_book()
     if selection == 0:
         print("--Exit The System-- ")
         save_books()
         print("Good Bye!")
-        exit()
-
 if __name__ == "__main__":
     main()
