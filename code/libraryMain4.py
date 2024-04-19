@@ -36,13 +36,19 @@ def print_menu(): #Leona
 #searching for a book
 def search_books(search_input, book_list): #Grace
     print("Search for a book sucessfully called")
-    search_result = []
+    search_result = ''
     return search_result
     
 #borrowing a book
 def borrow_book(book_list): #Leona
+    #should work but need to be tested once find book is programmed 
     borrow_isbn = int(input("Enter a book ISBN: "))
     find_book_by_isbn(borrow_isbn)
+    if borrow_isbn in book_list:
+        print("Book has been borrowed")
+        Book.borrow_it()
+    else:
+        print("Book not found")
 
 #finding a book by ISBN
 def find_book_by_isbn(book_list): #Grace
