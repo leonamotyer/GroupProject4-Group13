@@ -1,6 +1,6 @@
 class Book:
         #genre info displayed in a dict, keys as genre ID, and values as name of genre
-    genre_info= {
+    genre_name= {
         0:"Romance",
         1:"Mystery",
         2:"Science Fiction",
@@ -31,6 +31,7 @@ class Book:
         return self.__author
     
     def get_genre_name(self):
+        self.__genre = Book.genre_name.get(self.__genre)
         return self.__genre
     
     def get_availability(self):
@@ -49,8 +50,9 @@ class Book:
     def set_author(self, author):
         self.__author = author
     
-    def set_genre(self, genre):
-        self.__genre = genre
+    def set_genre(self, genre_id):
+       self.__genre = Book.genre_name.get(genre_id)
+        
         
     def borrow_it(self):
         self.__availability = "Borrowed"
@@ -62,7 +64,7 @@ class Book:
         print(f'ISBN: {self.__isbn}\nTitle: {self.__title}\nAuthor: {self.__author}\nGenre: {self.__genre}\nAvailability: {self.__availability}')
     
     
-    def print_all(self, catalogue):
+    def print_all(self,catalogue):
         print(f'{"ISBN":<16} {"Title":<30} {"Author":<21} {"Genre":<21} {"Availability":<11}')
         for book in catalogue:
             print(f'{book.get_isbn():<15} {book.get_title():<30} {book.get_author():<20} {book.get_genre():<20} {book.get_availability():<10}')

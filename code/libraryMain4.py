@@ -17,9 +17,6 @@ from book import Book
 # loading a list of books from a file
 def load_books(): #Grace
     book_list = []
-    title = ''
-    author = ''
-    isbn = ''
     book_count = 0
     catalouge = open('code/books.csv', 'r')
     for line in catalouge:
@@ -94,7 +91,8 @@ def save_books(): #Jose
 #main function for program
 def main(): #Mahdi
     book_list =load_books()
-    print(book_list)
+    for i in book_list:
+        Book.display(self=i)
     selection = print_menu()
     while selection != 0:
         if selection == 1:
