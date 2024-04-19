@@ -17,7 +17,7 @@ class Book:
         self.__author = author
         self.__availability = availability
         self.__isbn = isbn
-        self.__genre = genre
+        self.__genre = Book.genre_name.get(genre)
      
         
     #Getters
@@ -31,8 +31,7 @@ class Book:
         return self.__author
     
     def get_genre_name(self):
-        self.__genre = Book.genre_name.get(self.__genre)
-        return self.__genre
+        return Book.genre_name.get(self.__genre)
     
     def get_availability(self):
         if self.__availability == True:
@@ -70,6 +69,6 @@ class Book:
             print(f'{book.get_isbn():<15} {book.get_title():<30} {book.get_author():<20} {book.get_genre():<20} {book.get_availability():<10}')
             
     def __str__(self):
-        results =  f"{self.__isbn:<15} {self.__title:<30} {self.__author:<20} {self.__genre:<20} {self.__availability:<10}"
+        results =  f"{self.__isbn:<14} {self.__title:<25} {self.__author:<25} {self.__genre:<20} {self.__availability:<10}"
    
         return results
