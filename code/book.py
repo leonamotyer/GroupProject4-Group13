@@ -1,6 +1,6 @@
 class Book:
         #genre info displayed in a dict, keys as genre ID, and values as name of genre
-    genre_info= {
+    __genre_info__= {
         0:"Romance",
         1:"Mystery",
         2:"Science Fiction",
