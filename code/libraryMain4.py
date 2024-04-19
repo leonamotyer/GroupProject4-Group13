@@ -17,7 +17,23 @@ from book import Book
 # loading a list of books from a file
 def load_books(): #Grace
     book_list = []
-    return book_list
+    title = ''
+    author = ''
+    isbn = ''
+    book_count = 0
+    catalouge = open('code/books.csv', 'r')
+    for line in catalouge:
+        items = line.rstrip('\n').split(',')
+        isbn = items[0]
+        title = items[1]
+        author = items[2]
+        genre = items[3]
+        availability = items[4]
+        bookCreated = Book(isbn, title, author, genre, availability)
+        book_list.append(bookCreated)
+        book_count += 1
+    catalouge.close()    
+    return book_list, book_count
 
 #printing the options menu
 def print_menu(): #Leona
@@ -52,6 +68,7 @@ def borrow_book(book_list): #Leona
 
 #finding a book by ISBN
 def find_book_by_isbn(book_list): #Grace
+    
     if Book.isbn in book_list:
         return Book
 
@@ -77,6 +94,7 @@ def save_books(): #Jose
 #main function for program
 def main(): #Mahdi
     book_list =load_books()
+    print(book_list)
     selection = print_menu()
     while selection != 0:
         if selection == 1:

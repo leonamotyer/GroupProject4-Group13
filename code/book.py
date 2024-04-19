@@ -13,53 +13,53 @@ class Book:
         9:"Poetry"
     }
     def __init__(self, isbn, title, author, genre, availability):
-        self.title = title
-        self.author = author
-        self.availability = availability
-        self.isbn = isbn
-        self.genre = genre
+        self.__title = title
+        self.__author = author
+        self.__availability = availability
+        self.__isbn = isbn
+        self.__genre = genre
      
         
     #Getters
     def get_isbn(self):
-        return self.isbn
+        return self.__isbn
     
     def get_title(self):
-        return self.title
+        return self.__title
     
     def get_author(self):
-        return self.author
+        return self.__author
     
     def get_genre_name(self):
-        return self.genre
+        return self.__genre
     
     def get_availability(self):
-        if self.availability == True:
+        if self.__availability == True:
             return "Available"
         else:
             return "Borrowed"
         
     #setters
     def set_isbn(self, isbn):
-        self.isbn = isbn
+        self.__isbn = isbn
         
     def set_title(self, title):
-        self.title = title
+        self.__title = title
         
     def set_author(self, author):
-        self.author = author
+        self.__author = author
     
     def set_genre(self, genre):
-        self.genre = genre
+        self.__genre = genre
         
     def borrow_it(self):
-        self.availability = "Borrowed"
+        self.__availability = "Borrowed"
             
     def return_it(self):
-        self.availability = "Available"
+        self.__availability = "Available"
         
     def display(self):
-        print(f'ISBN: {self.isbn}\nTitle: {self.title}\nAuthor: {self.author}\nGenre: {self.genre}\nAvailability: {self.availability}')
+        print(f'ISBN: {self.__isbn}\nTitle: {self.__title}\nAuthor: {self.__author}\nGenre: {self.__genre}\nAvailability: {self.__availability}')
     
     
     def print_all(self, catalogue):
@@ -68,6 +68,6 @@ class Book:
             print(f'{book.get_isbn():<15} {book.get_title():<30} {book.get_author():<20} {book.get_genre():<20} {book.get_availability():<10}')
             
     def __str__(self):
-        results =  f"{self.isbn:<15} {self.title:<30} {self.author:<20} {self.genre:<20} {self.availability:<10}"
+        results =  f"{self.__isbn:<15} {self.__title:<30} {self.__author:<20} {self.__genre:<20} {self.__availability:<10}"
    
         return results
