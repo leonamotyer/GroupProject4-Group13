@@ -49,8 +49,9 @@ class Book:
     def set_author(self, author):
         self.author = author
     
-    def set_genre(self, genre):
+    def set_genre(self, genre, genre_info):
         self.genre = genre
+        genre= genre_info.value()
         
     def borrow_it(self):
         self.availability = "Borrowed"
