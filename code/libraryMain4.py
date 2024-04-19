@@ -92,7 +92,7 @@ def save_books(): #Jose
 def main(): #Mahdi
     book_list =load_books()
     for i in book_list:
-        Book.display(self=i)
+        Book.print_all(i)
     selection = print_menu()
     while selection != 0:
         if selection == 1:

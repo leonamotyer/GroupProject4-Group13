@@ -17,7 +17,7 @@ class Book:
         self.__author = author
         self.__availability = availability
         self.__isbn = isbn
-        self.__genre = Book.genre_name.get(genre)
+        self.__genre = genre
      
         
     #Getters
@@ -32,6 +32,9 @@ class Book:
     
     def get_genre_name(self):
         return Book.genre_name.get(self.__genre)
+    
+    def get_available(self):
+        return self.__availability
     
     def get_availability(self):
         if self.__availability == True:
@@ -50,25 +53,28 @@ class Book:
         self.__author = author
     
     def set_genre(self, genre_id):
-       self.__genre = Book.genre_name.get(genre_id)
-        
+       self.__genre = genre_id
         
     def borrow_it(self):
-        self.__availability = "Borrowed"
+        self.__availability = False
             
     def return_it(self):
-        self.__availability = "Available"
+        self.__availability = True
         
     def display(self):
-        print(f'ISBN: {self.__isbn}\nTitle: {self.__title}\nAuthor: {self.__author}\nGenre: {self.__genre}\nAvailability: {self.__availability}')
+        genre_name = self.get_genre_name()
+        availability_bool = self.get_availability()
+        print(f'ISBN: {self.__isbn}\nTitle: {self.__title}\nAuthor: {self.__author}\nGenre: {genre_name}\nAvailability: {availability_bool}')
     
     
-    def print_all(self,catalogue):
+    def print_all(books):
         print(f'{"ISBN":<16} {"Title":<30} {"Author":<21} {"Genre":<21} {"Availability":<11}')
-        for book in catalogue:
-            print(f'{book.get_isbn():<15} {book.get_title():<30} {book.get_author():<20} {book.get_genre():<20} {book.get_availability():<10}')
+        for book in books:
+            book.display()
             
     def __str__(self):
-        results =  f"{self.__isbn:<14} {self.__title:<25} {self.__author:<25} {self.__genre:<20} {self.__availability:<10}"
+        genre_name = self.get_genre_name()
+        availability_bool = self.get_availability()
+        results =  f"{self.__isbn:<14} {self.__title:<25} {self.__author:<25} {genre_name:<20} {availability_bool:<10}"
    
         return results
