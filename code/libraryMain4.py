@@ -17,6 +17,17 @@ from book import Book
 # loading a list of books from a file
 def load_books(): #Grace
     book_list = []
+    title = ''
+    author = ''
+    isbn = ''
+    catalouge = open('books.csv', 'r')
+    for line in catalouge:
+        items = line.rstrip('\n').split(',')
+        bookCreated = Book(items[0], items[1], items[2])
+        isbn.append(items[0])
+        title.append(items[1])
+        author.append(items[2])
+        
     return book_list
 
 #printing the options menu
