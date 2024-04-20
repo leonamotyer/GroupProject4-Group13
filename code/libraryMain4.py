@@ -24,13 +24,13 @@ def load_books(): #Grace
         isbn = items[0]
         title = items[1]
         author = items[2]
-        genre = items[3]
-        availability = items[4]
+        genre = int(items[3])
+        availability = bool(items[4])
         bookCreated = Book(isbn, title, author, genre, availability)
         book_list.append(bookCreated)
         book_count += 1
     catalouge.close()    
-    return book_list, book_count
+    return book_list 
 
 #printing the options menu
 def print_menu(): #Leona
@@ -56,8 +56,8 @@ def search_books(search_input, book_list): #Grace
 def borrow_book(book_list): #Leona
     #should work but need to be tested once find book is programmed 
     borrow_isbn = int(input("Enter a book ISBN: "))
-    find_book_by_isbn(borrow_isbn)
-    if borrow_isbn in book_list:
+    book = find_book_by_isbn(borrow_isbn)
+    if book is not None:
         print("Book has been borrowed")
         Book.borrow_it()
     else:
@@ -91,8 +91,8 @@ def save_books(): #Jose
 #main function for program
 def main(): #Mahdi
     book_list =load_books()
-    for i in book_list:
-        Book.print_all(i)
+    for b in book_list:
+        print(b)
     selection = print_menu()
     while selection != 0:
         if selection == 1:
