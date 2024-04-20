@@ -16,27 +16,27 @@ import os
 import csv
 class Library_Catalouge():
 
-    # loading a list of books from a file
-    def load_books(self, book_list, catalouge): #Grace
-        existence = os.path.exists(catalouge)
-        while not existence:
-            catalouge = input("File not found. Re-enter book catalog filename: ")
-            existence = os.path.exists(catalouge)
-        with open(catalouge, 'r', encoding='utf-8') as catalouge:
-            catalouge_reader = csv.reader(catalouge, delimiter=',')
-            book_count = 0
-            for line in catalouge_reader:
-                isbn = line[0]
-                title = line[1]
-                author = line[2]
-                genre = int(line[3])
-                if line[4] == 'True':
-                    availability = True
-                else:
-                    availability = False
-                book_list.append(Book(isbn, title, author, genre, availability))
-                book_count += 1 
-            return book_count
+  # loading a list of books from a file
+  def load_books(self, book_list, catalouge): #Grace
+      existence = os.path.exists(catalouge)
+      while not existence:
+          catalouge = input("File not found. Re-enter book catalog filename: ")
+          existence = os.path.exists(catalouge)
+      with open(catalouge, 'r', encoding='utf-8') as catalouge:
+          catalouge_reader = csv.reader(catalouge, delimiter=',')
+          book_count = 0
+          for line in catalouge_reader:
+              isbn = line[0]
+              title = line[1]
+              author = line[2]
+              genre = int(line[3])
+              if line[4] == 'True':
+                  availability = True
+              else:
+                  availability = False
+              book_list.append(Book(isbn, title, author, genre, availability))
+              book_count += 1 
+          return book_count
 
     #printing the options menu
     def print_menu(self, library_menu): #Leona
@@ -68,6 +68,7 @@ class Library_Catalouge():
         else:
             self.print_books(search_result)
 
+
     #borrowing a book
     def borrow_book(book_list): #Leona
         #should work but need to be tested once find book is programmed 
@@ -77,6 +78,7 @@ class Library_Catalouge():
             print("Book has been borrowed")
         else:
             print("Book not found")
+
 
     #finding a book by ISBN
     def find_book_by_isbn(book_list): #Grace
@@ -111,10 +113,11 @@ class Library_Catalouge():
         print("Book catalog has been saved")
     #main function for program
 
-library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book"}
 def main(): #Mahdi
+
+  library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book"}
         # set up a list of books
-    book_list = []
+    book_list = load_books()
     print("Starting the system ...")
     csv_path = input("Enter book catalog filename: ")
     libraryCatalouge= Library_Catalouge()
