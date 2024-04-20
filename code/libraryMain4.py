@@ -64,8 +64,6 @@ class Library_Catalouge():
         if len(search_result) == 0:
             print("No matching books found.")
         else:
-            print('ISBN            Title                     Author                 Genre           Availability')
-            print('--------------- ------------------------- ----------------------- -------------- ------------')
             self.print_books(search_result)
 
     #borrowing a book
@@ -98,9 +96,14 @@ class Library_Catalouge():
         print("Remove a book sucessfully called")
 
     #displaying a list of books
-    def print_books(): #Mahdi
-        print("Print books sucessfully called")
-
+    def print_books(self, book_list): #Mahdi
+        print('-- Print book catalog --')
+        # Iterates through the list of books and prints the information for each book.
+        print(f'{"ISBN":<14} {"Title":<25} {"Author":<25} {"Genre":<20} {"Availability":<20}')
+        print(f"{14*'-'} {25*'-'} {25*'-'} {20*'-'} {20*'-'}")
+        for book_item in book_list:
+            genre= str(book_item.get_genre_name())
+            print(f"{book_item.get_isbn():<14} {book_item.get_title():<25} {book_item.get_author():<25} {genre:<20} {book_item.get_availability():<20}")
     #saving the book catalog to a file
     def save_books(): #Jose
         print("Book catalog has been saved")
