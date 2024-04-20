@@ -29,12 +29,14 @@ class Library_Catalouge():
                 isbn = line[0]
                 title = line[1]
                 author = line[2]
-                genre = line[3]
-                availability = line[4]
-                bookCreated= Book(isbn, title, author, genre, availability)
-                book_list.append(bookCreated)
+                genre = int(line[3])
+                if line[4] == 'True':
+                    availability = True
+                else:
+                    availability = False
+                book_list.append(Book(isbn, title, author, genre, availability))
                 book_count += 1 
-            return book_list, book_count
+            return book_count
 
     #printing the options menu
     def print_menu(self, library_menu): #Leona
@@ -96,7 +98,7 @@ class Library_Catalouge():
         print("Remove a book sucessfully called")
 
     #displaying a list of books
-    def print_books(self, book_list): #Mahdi
+    def print_books(self, book_list:list): #Mahdi
         print('-- Print book catalog --')
         # Iterates through the list of books and prints the information for each book.
         print(f'{"ISBN":<14} {"Title":<25} {"Author":<25} {"Genre":<20} {"Availability":<20}')
