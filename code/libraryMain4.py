@@ -47,11 +47,22 @@ def print_menu(): #Leona
     return selection
 
 #searching for a book
-def search_books(search_input, book_list): #Grace
-    print("Search for a book sucessfully called")
-    search_result = ''
-    return search_result
-    
+def search_books(self, book_list): #Grace
+    search_result=[]
+    print("-- Search for books --")
+    search_input = input("Enter Search Value: ")
+    for book_item in book_list:
+        genre= str(book_item.get_genre_name())
+        if search_input.lower() in book_item.get_isbn().lower() \
+            or search_input.lower() in book_item.get_title().lower() \
+            or search_input.lower() in book_item.get_author().lower() \
+            or search_input.lower() in genre.lower():
+            search_result.append(book_item)
+    if len(search_result) == 0:
+        print("No matching books found.")
+    else:
+        self.print_books(search_result)
+
 #borrowing a book
 def borrow_book(book_list): #Leona
     #should work but need to be tested once find book is programmed 
@@ -86,7 +97,7 @@ def print_books(): #Mahdi
     print("Print books sucessfully called")
 
 #saving the book catalog to a file
-def save_books(): #Jose
+def save_books(book_list): #Jose
     print("Book catalog has been saved")
 #main function for program
 def main(): #Mahdi
