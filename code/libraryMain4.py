@@ -124,7 +124,11 @@ class Library_Catalouge():
             genre= str(book_item.get_genre_name())
             print(f"{book_item.get_isbn():<14} {book_item.get_title():<25} {book_item.get_author():<25} {genre:<20} {book_item.get_availability():<20}")
     #saving the book catalog to a file
-    def save_books(): #Jose
+    def save_books(self, book_list, file_path): #Jose
+     with open(file_path,'books', newline='', encoding='utf-8') as file:
+        writer = csv.writer(books)
+        for book in book_list:
+            writer.writerow([book.get_isbn(), book.get_title(), book.get_author(), book.get_genre(), book.get_available()])
         print("Book catalog has been saved")
     #main function for program
 
