@@ -105,10 +105,16 @@ class Library_Catalouge():
         print("Add a book sucessfully called")
 
     #removing a book
-    def remove_book(): #Jose
-        print("Remove a book sucessfully called")
+    def remove_book(self, book_list): #Jose
+        remove_isbn = input("Enter a book ISBN to remove: ")
+        found_book = self.find_book_by_isbn(book_list, remove_isbn)
+        if found_book is not None:
+            book_list.remove(found_book)
+        else: 
+            print("Book not found")
+            print("Remove a book sucessfully called")
 
-    #displaying a list of books
+#displaying a list of books
     def print_books(self, book_list:list): #Mahdi
         print('-- Print book catalog --')
         # Iterates through the list of books and prints the information for each book.
