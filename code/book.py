@@ -1,6 +1,6 @@
 class Book:
         #genre info displayed in a dict, keys as genre ID, and values as name of genre
-    genre_info= {
+    genre_name= {
         0:"Romance",
         1:"Mystery",
         2:"Science Fiction",
@@ -48,26 +48,28 @@ class Book:
         
     def set_author(self, author):
         self.__author = author
-    
-    def set_genre(self, genre):
-        self.__genre = genre
         
     def borrow_it(self):
-        self.__availability = "Borrowed"
+        self.__availability = False
             
     def return_it(self):
-        self.__availability = "Available"
+        self.__availability = True
         
     def display(self):
-        print(f'ISBN: {self.__isbn}\nTitle: {self.__title}\nAuthor: {self.__author}\nGenre: {self.__genre}\nAvailability: {self.__availability}')
-    
-    
-    def print_all(self, catalogue):
+        genre_name = self.get_genre_name()
+        availability_bool = self.get_availability()
+        print(f'ISBN: {self.__isbn}\nTitle: {self.__title}\nAuthor: {self.__author}\nGenre: {genre_name}\nAvailability: {availability_bool}')
+
+    def set_genre(self, genre):
+        self.__genre = genre
+   
+    def print_all(books):
         print(f'{"ISBN":<16} {"Title":<30} {"Author":<21} {"Genre":<21} {"Availability":<11}')
-        for book in catalogue:
-            print(f'{book.get_isbn():<15} {book.get_title():<30} {book.get_author():<20} {book.get_genre():<20} {book.get_availability():<10}')
+        for book in books:
+            book.display()
             
     def __str__(self):
-        results =  f"{self.__isbn:<15} {self.__title:<30} {self.__author:<20} {self.__genre:<20} {self.__availability:<10}"
-   
+        genre_name = self.get_genre_name()
+        availability_bool = self.get_availability()
+        results =  f"{self.__isbn:<14} {self.__title:<25} {self.__author:<25} {genre_name:<20} {availability_bool:<10}"
         return results
