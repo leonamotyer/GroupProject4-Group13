@@ -68,17 +68,16 @@ class Library_Catalouge():
         else:
             self.print_books(search_result)
 
-
-    #borrowing a book
-    def borrow_book(book_list): #Leona
-        #should work but need to be tested once find book is programmed 
-        borrow_isbn = input("Enter a book ISBN: ")
-        Library_Catalouge.find_book_by_isbn(borrow_isbn)
-        if borrow_isbn in book_list:
-            print("Book has been borrowed")
-        else:
-            print("Book not found")
-
+#borrowing a book
+def borrow_book(book_list): #Leona
+    #should work but need to be tested once find book is programmed 
+    borrow_isbn = int(input("Enter a book ISBN: "))
+    book = find_book_by_isbn(borrow_isbn)
+    if book is not None:
+        print("Book has been borrowed")
+        Book.borrow_it()
+    else:
+        print("Book not found")
 
     #finding a book by ISBN
     def find_book_by_isbn(book_list): #Grace
@@ -113,8 +112,8 @@ class Library_Catalouge():
         print("Book catalog has been saved")
     #main function for program
 
-def main(): #Mahdi
 
+def main(): #Mahdi
   library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book"}
         # set up a list of books
     book_list = load_books()

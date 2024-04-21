@@ -31,7 +31,10 @@ class Book:
         return self.__author
     
     def get_genre_name(self):
-        return self.__genre
+        return Book.genre_name.get(self.__genre)
+    
+    def get_available(self):
+        return self.__availability
     
     def get_availability(self):
         if self.__availability == True:
@@ -48,6 +51,9 @@ class Book:
         
     def set_author(self, author):
         self.__author = author
+
+    def set_genre(self, genre_id):
+       self.__genre = genre_id
         
     def borrow_it(self):
         self.__availability = False
@@ -62,7 +68,7 @@ class Book:
 
     def set_genre(self, genre):
         self.__genre = genre
-   
+
     def print_all(books):
         print(f'{"ISBN":<16} {"Title":<30} {"Author":<21} {"Genre":<21} {"Availability":<11}')
         for book in books:
