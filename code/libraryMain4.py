@@ -40,15 +40,15 @@ class Library_Catalouge():
 
     #printing the options menu
     def print_menu(self, library_menu): #Leona
-        print("Welcome to the Library\n")
-        print(f"1. {library_menu.get(1)}")
-        print(f"2. {library_menu.get(2)}")
-        print(f"3. {library_menu.get(3)}")
-        print(f"0. {library_menu.get(0)}\n")    
-        selection = int(input("Enter your selection: "))
+        print("Readers Guild\n")
+        print(f"1. {library_menu.get('1')}")
+        print(f"2. {library_menu.get('2')}")
+        print(f"3. {library_menu.get('3')}")
+        print(f"0. {library_menu.get('0')}\n")    
+        selection =input("Enter your selection: ")
         if selection not in library_menu.keys():
             print("Invalid option. Please try again.")
-            self.print_menu()
+            self.print_menu(library_menu)
         return selection
 
     #searching for a book
@@ -69,7 +69,7 @@ class Library_Catalouge():
             self.print_books(search_result)
 
     #borrowing a book
-    def borrow_book(self,book_list:list): #Leona
+    def borrow_book(self,book_list): #Leona
          # input isbn
         isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
         index_nbr = self.find_book_by_isbn(book_list, isbn)
@@ -80,9 +80,9 @@ class Library_Catalouge():
             if book_list[index_nbr].get_available():
                 # borrow book
                 book_list[index_nbr].borrow_it()
-                print(f"'{book_list[index_nbr].get_title()}' with ISBN {book_list[index_nbr].get_isbn()} " +  "successfully borrowed.")
+                print(f"'{book_list[index_nbr].get_title()}' with ISBN {book_list[index_nbr].get_isbn()} successfully borrowed.")
             else:
-                print(f"'{book_list[index_nbr].get_title()}' with ISBN {book_list[index_nbr].get_isbn()} " + "is not currently available.")
+                print(f"'{book_list[index_nbr].get_title()}' with ISBN {book_list[index_nbr].get_isbn()} is not currently available.")
     #finding a book by ISBN
     def find_book_by_isbn(self,book_list, isbn): #Grace
         for book_item in book_list:
@@ -92,16 +92,44 @@ class Library_Catalouge():
             return (-1)
 
     #returning a book
-    def return_book(book_list): #Jose
+    def return_book(self,book_list:list): #Jose
         print("Return a book sucessfully called")
+        return_isbn = input("Enter a book ISBN to return: ")
+        found_book = self.find_book_by_isbn(book_list, return_isbn)
+        if found_book != -1:
+            if not book_list[found_book].get_available():
+                book_list[found_book].return_it()
+                print(f"'{book_list[found_book].get_title()}' with {book_list[found_book].get_isbn()} successfully returned.")
+            else:
+                print(f"'{book_list[found_book].get_title()}' with {book_list[found_book].get_isbn()} is not currently borrowed.")
+        else:
+            print("No book found with that ISBN.")
 
     #adding a book
-    def add_book(): #Mahdi
-        print("Add a book sucessfully called")
+    def add_book(self, book:list): #Mahdi
+        print("-- Add a book --")
+        # input ISBN, title, author, and genre name
+        isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
+        title = input("Enter title: ")
+        author = input("Enter author name: ")
+        idGenre_name = input("Enter the genre: ")
+        idGenre_num= book.Book.GENRE_NAME_DICT.get(idGenre_name, '-1')
 
+        while idGenre_num == '-1':
+            print("Invalid genre. Choices are: Romance, Mystery, Science Fiction, Thriller, " +
+                    "Young Adult, Children's Fiction, Self-help, Fantasy, Historical Fiction, Poetry")
+            idGenre_name = input("Enter the genre: ")
+            idGenre_num = book.Book.GENRE_NAME_DICT.get(idGenre_name, '-1')
     #removing a book
-    def remove_book(): #Jose
-        print("Remove a book sucessfully called")
+    def remove_book(self, book_list): #Jose
+        remove_isbn = input("Enter a book ISBN to remove: ")
+        found_book = self.find_book_by_isbn(book_list, remove_isbn)
+        if found_book is not None:
+            book_list.remove(found_book)
+        else: 
+            print("Book not found")
+            print("Remove a book sucessfully called")
+
 
     #displaying a list of books
     def print_books(self, book_list:list): #Mahdi
@@ -117,7 +145,7 @@ class Library_Catalouge():
         print("Book catalog has been saved")
     #main function for program
 
-library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book"}
+library_menu = {'0':"Exit the system", '1': "Search for a book", '2': "Borrow a book", '3': "Return a book"}
 def main(): #Mahdi
         # set up a list of books
     book_list = []
@@ -134,7 +162,7 @@ def main(): #Mahdi
         elif selection == 2:
             libraryCatalouge.borrow_book(book_list)
         elif selection == 3:
-            libraryCatalouge.return_book()
+            libraryCatalouge.return_book(book_list)
         elif selection == 0:
             print("--Exit The System-- ")
             libraryCatalouge.save_books()
