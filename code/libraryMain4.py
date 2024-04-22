@@ -89,16 +89,32 @@ class Library_Catalouge():
     #returning a book
     def return_book(book_list): #Jose
         print("Return a book sucessfully called")
+        return_isbn = input("Enter a book ISBN to return: ")
+        found_book = self.find_book_by_isbn(book_list, return_isbn)
+        if found_book is not None:
+            if not found_book.get_available:
+                found_book.return_it()
+                print("Book has been returned")
+            else:
+                print("this book was not borrowed")
+        else:
+            print("Book not found")
 
     #adding a book
     def add_book(): #Mahdi
         print("Add a book sucessfully called")
 
     #removing a book
-    def remove_book(): #Jose
-        print("Remove a book sucessfully called")
+    def remove_book(self, book_list): #Jose
+        remove_isbn = input("Enter a book ISBN to remove: ")
+        found_book = self.find_book_by_isbn(book_list, remove_isbn)
+        if found_book is not None:
+            book_list.remove(found_book)
+        else: 
+            print("Book not found")
+            print("Remove a book sucessfully called")
 
-    #displaying a list of books
+#displaying a list of books
     def print_books(self, book_list:list): #Mahdi
         print('-- Print book catalog --')
         # Iterates through the list of books and prints the information for each book.
@@ -107,18 +123,25 @@ class Library_Catalouge():
         for book_item in book_list:
             genre= str(book_item.get_genre_name())
             print(f"{book_item.get_isbn():<14} {book_item.get_title():<25} {book_item.get_author():<25} {genre:<20} {book_item.get_availability():<20}")
-    #saving the book catalog to a file
-    def save_books(): #Jose
+        
+#saving the book catalog to a file
+    def save_books(self, book_list, file_path): #Jose
+     with open(file_path,'books', newline='', encoding='utf-8') as file:
+        writer = csv.writer(books)
+        for book in book_list:
+            writer.writerow([book.get_isbn(), book.get_title(), book.get_author(), book.get_genre(), book.get_available()])
         print("Book catalog has been saved")
     #main function for program
 
 
 def main(): #Mahdi
     library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book"}
-        # set up a list of books
-    book_list = load_books()
+  # set up a list of books
+    Library_Catalouge = Library_Catalouge()
+    book_list = []
     print("Starting the system ...")
     csv_path = input("Enter book catalog filename: ")
+    book_count = libraryCatalouge.load_books(book_list, csv_path)
     libraryCatalouge= Library_Catalouge()
     libraryCatalouge.load_books(book_list, csv_path)
     # present the menu
