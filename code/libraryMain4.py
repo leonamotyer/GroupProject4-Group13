@@ -52,12 +52,12 @@ class Library_Catalouge():
         return selection
 
     #searching for a book
-    def search_books(self, book_list): #Grace
+    def search_books(self, book_list:list): #Grace
         search_result=[]
         print("-- Search for books --")
         search_input = input("Enter Search Value: ")
         for book_item in book_list:
-            genre= str(book_item.get_genre_name())
+            genre= Book.GENRE_NAME_DICT.get(search_input, '-1')
             if search_input.lower() in book_item.get_isbn().lower() \
                 or search_input.lower() in book_item.get_title().lower() \
                 or search_input.lower() in book_item.get_author().lower() \
@@ -114,6 +114,7 @@ class Library_Catalouge():
         author = input("Enter author name: ")
         idGenre_name = input("Enter the genre: ")
         idGenre_num= Book.GENRE_NAME_DICT.get(idGenre_name, '-1')
+        
 
         while idGenre_num == '-1':
             print("Invalid genre. Choices are: Romance, Mystery, Science Fiction, Thriller, " +
@@ -171,13 +172,13 @@ def main(): #Mahdi
     loop= True
     while loop:
         selection = libraryCatalouge.print_menu(library_menu)
-        if selection == 1:
+        if selection == '1':
             libraryCatalouge.search_books(book_list)
-        elif selection == 2:
+        elif selection == '2':
             libraryCatalouge.borrow_book(book_list)
-        elif selection == 3:
+        elif selection == '3':
             libraryCatalouge.return_book(book_list)
-        elif selection == 0:
+        elif selection == '0':
             print("--Exit The System-- ")
             libraryCatalouge.save_books()
             print("Good Bye!")
