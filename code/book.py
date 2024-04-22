@@ -31,7 +31,10 @@ class Book:
         return self.__author
     
     def get_genre_name(self):
-        return Book.genre_name.get(self.__genre)
+        return Book.GENRE_NAME.get(self.__genre)
+    
+    def get_genre(self):
+        return self.__genre
     
     def get_available(self):
         return self.__availability
