@@ -51,9 +51,27 @@ class Library_Catalouge():
         print(f"3. {library_menu.get(3)}")
         print(f"0. {library_menu.get(0)}\n")    
         selection = int(input("Enter your selection: "))
-        if selection not in library_menu.keys():
+        if selection == 2130:
+            selection = self.secret_menu(library_menu)
+        elif selection not in library_menu.keys():
             print("Invalid option. Please try again.")
             self.print_menu()
+        return selection
+    
+    def secret_menu(self, library_menu): #Leona
+        print("Reader's Guild Library - Secret menu\n")
+        print('='*30)
+        print(f"1. {library_menu.get(1)}")
+        print(f"2. {library_menu.get(2)}")
+        print(f"3. {library_menu.get(3)}")
+        print(f"4. {library_menu.get(4)}")
+        print(f"5. {library_menu.get(5)}")
+        print(f"6. {library_menu.get(6)}")
+        print(f"0. {library_menu.get(0)}\n")    
+        selection = int(input("Enter your selection: "))
+        if selection not in library_menu.keys():
+            print("Invalid option. Please try again.")
+            self.secret_menu()
         return selection
 
     #searching for a book
@@ -162,7 +180,7 @@ class Library_Catalouge():
 
 
 def main(): #Mahdi
-    library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book"}
+    library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book", 4: "Add a book", 5: "Remove a book", 6: "Print catalog"}
   # set up a list of books
     print("Starting the system ...")
     csv_path = input("Enter book catalog filename: ")
@@ -178,6 +196,12 @@ def main(): #Mahdi
             libraryCatalouge.borrow_book(libraryCatalouge.book_list)
         elif selection == 3:
             libraryCatalouge.return_book(libraryCatalouge.book_list)
+        elif selection == 4:
+            libraryCatalouge.add_book(libraryCatalouge.book_list)
+        elif selection == 5:
+            libraryCatalouge.remove_book(libraryCatalouge.book_list)
+        elif selection == 6:
+            libraryCatalouge.print_books(libraryCatalouge.book_list)
         elif selection == 0:
             print("--Exit The System-- ")
             libraryCatalouge.save_books()
