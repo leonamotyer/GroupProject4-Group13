@@ -92,18 +92,18 @@ class Library_Catalouge():
             self.print_books(search_result)
 
     #borrowing a book
-    def borrow_book(book_list): #Leona
+    def borrow_book(self): #Leona
         #should work but need to be tested once find book is programmed 
-        borrow_isbn = int(input("Enter a book ISBN: "))
-        book = Library_Catalouge.find_book_by_isbn(borrow_isbn)
-        if book is not None:
-            if book.get_available==True:
+        isbn = input("Enter a book ISBN in formatt 999-9999999999: ")
+        book = self.find_book_by_isbn(isbn)
+        if book is not False:
+            if Book.get_available==True:
                 print("Book has been borrowed")
                 Book.borrow_it()
             else:
                 print("Book is not available")
         else:
-            print("Book not found")
+            print("No book found with that ISBN.")
 
     #finding a book by ISBN
     def find_book_by_isbn(self, isbn): #Grace
@@ -111,7 +111,7 @@ class Library_Catalouge():
             if book_item.get_isbn() == isbn:
                 return self.book_list.index(book_item)
             else:
-                return ('-1')
+                return False
 
     #returning a book
     def return_book(book_list): #Jose
@@ -171,11 +171,12 @@ class Library_Catalouge():
         
 #saving the book catalog to a file
     def save_books(self, book_list, file_path): #Jose
-     with open(file_path,'books', newline='', encoding='utf-8') as file:
-        writer = csv.writer(books)
-        for book in book_list:
-            writer.writerow([book.get_isbn(), book.get_title(), book.get_author(), book.get_genre(), book.get_available()])
-        print("Book catalog has been saved")
+        
+        with open(file_path,'books', newline='', encoding='utf-8') as file:
+            writer = csv.writer(books)
+            for book in book_list:
+                writer.writerow([book.get_isbn(), book.get_title(), book.get_author(), book.get_genre(), book.get_available()])
+            print("Book catalog has been saved")
     #main function for program
 
 
@@ -193,7 +194,7 @@ def main(): #Mahdi
         if selection == 1:
             libraryCatalouge.search_books(libraryCatalouge.book_list)
         elif selection == 2:
-            libraryCatalouge.borrow_book(libraryCatalouge.book_list)
+            libraryCatalouge.borrow_book()
         elif selection == 3:
             libraryCatalouge.return_book(libraryCatalouge.book_list)
         elif selection == 4:
@@ -206,9 +207,10 @@ def main(): #Mahdi
             print("--Exit The System-- ")
             libraryCatalouge.save_books()
             print("Good Bye!")
+            loop = False
         
     save_path = "./saved_books.csv"
-    libraryCatalouge.save_books(book_list,save_path)
+    libraryCatalouge.save_books(Library_Catalouge.book_list, save_path)
 #calling main function to begin program        
 if __name__ == "__main__":
     main()
