@@ -15,32 +15,37 @@ from book import Book
 import os
 import csv
 class Library_Catalouge():
+    
+    book_list = []
+    book_count = 0
 
   # loading a list of books from a file
-    def load_books(self, book_list, catalouge): #Grace
-        existence = os.path.exists(catalouge)
-        while not existence:
-          catalouge = input("File not found. Re-enter book catalog filename: ")
-          existence = os.path.exists(catalouge)
-        with open(catalouge, 'r', encoding='utf-8') as catalouge:
-          catalouge_reader = csv.reader(catalouge, delimiter=',')
-          book_count = 0
-          for line in catalouge_reader:
-              isbn = line[0]
-              title = line[1]
-              author = line[2]
-              genre = int(line[3])
-              if line[4] == 'True':
-                  availability = True
-              else:
-                  availability = False
-              book_list.append(Book(isbn, title, author, genre, availability))
-              book_count += 1 
-        return book_count
+    def load_books(self, book_list, csv_path): #Grace
+        existence = os.path.exists(csv_path)
+        catalouge = open(csv_path, 'r')
+        while existence == False:
+            csv_path = input("File not found. Re-enter book catalog filename: ")
+            existence = os.path.exists(csv_path)
+        else:
+            for line in catalouge:
+                items = line.rstrip('\n').split(',')
+                isbn = items[0]
+                title = items[1]
+                author = items[2]
+                genre = int(items[3])
+                if items[4] == 'True':
+                    availability = True
+                else:
+                    availability = False
+                book_list.append(Book(isbn, title, author, genre, availability))
+                self.book_count += 1 
+        print('Book catalog has been loaded\n')
+        
 
     #printing the options menu
     def print_menu(self, library_menu): #Leona
-        print("Welcome to the Library\n")
+        print("Reader's Guild Library - Main menu\n")
+        print('='*30)
         print(f"1. {library_menu.get(1)}")
         print(f"2. {library_menu.get(2)}")
         print(f"3. {library_menu.get(3)}")
@@ -72,19 +77,23 @@ class Library_Catalouge():
     def borrow_book(book_list): #Leona
         #should work but need to be tested once find book is programmed 
         borrow_isbn = int(input("Enter a book ISBN: "))
-        book = find_book_by_isbn(borrow_isbn)
+        book = Library_Catalouge.find_book_by_isbn(borrow_isbn)
         if book is not None:
-            print("Book has been borrowed")
-            Book.borrow_it()
+            if book.get_available==True:
+                print("Book has been borrowed")
+                Book.borrow_it()
+            else:
+                print("Book is not available")
         else:
             print("Book not found")
 
     #finding a book by ISBN
-    def find_book_by_isbn(book_list): #Grace
-        if Book.isbn in book_list:
-            return Book
-        else:
-            return ('-1')
+    def find_book_by_isbn(self, isbn): #Grace
+        for book_item in self.book_list:
+            if book_item.get_isbn() == isbn:
+                return self.book_list.index(book_item)
+            else:
+                return ('-1')
 
     #returning a book
     def return_book(book_list): #Jose
@@ -101,9 +110,27 @@ class Library_Catalouge():
             print("Book not found")
 
     #adding a book
-    def add_book(): #Mahdi
-        print("Add a book sucessfully called")
-
+    def add_book(self): #Mahdi
+        print("-- Add a book --")
+        # input ISBN, title, author, and genre name
+        isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
+        title = input("Enter title: ")
+        author = input("Enter author name: ")
+        idGenre_name = input("Enter the genre: ")
+        idGenre_num= Book.genre_name.get(idGenre_name, '-1')
+        while idGenre_num == '-1':
+            print("Invalid genre. Choices are: Romance, Mystery, Science Fiction, Thriller, " +
+                    "Young Adult, Children's Fiction, Self-help, Fantasy, Historical Fiction, Poetry")
+            idGenre_name = input("Enter the genre: ")
+            idGenre_num = Book.genre_name.get(idGenre_name, '-1')
+        
+        while self.find_book_by_isbn(isbn) != -1:
+            print("A book with that ISBN already exists.")
+            isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
+        # add book to book_list
+        self.book_list.append(Book(isbn, title, author, idGenre_num, True))
+        print(f"'{title}' with ISBN {isbn} successfully added.\n")
+  
     #removing a book
     def remove_book(self, book_list): #Jose
         remove_isbn = input("Enter a book ISBN to remove: ")
@@ -114,7 +141,7 @@ class Library_Catalouge():
             print("Book not found")
             print("Remove a book sucessfully called")
 
-#displaying a list of books
+    #displaying a list of books
     def print_books(self, book_list:list): #Mahdi
         print('-- Print book catalog --')
         # Iterates through the list of books and prints the information for each book.
@@ -137,29 +164,27 @@ class Library_Catalouge():
 def main(): #Mahdi
     library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book"}
   # set up a list of books
-    Library_Catalouge = Library_Catalouge()
-    book_list = []
     print("Starting the system ...")
     csv_path = input("Enter book catalog filename: ")
-    book_count = libraryCatalouge.load_books(book_list, csv_path)
     libraryCatalouge= Library_Catalouge()
-    libraryCatalouge.load_books(book_list, csv_path)
+    libraryCatalouge.load_books(Library_Catalouge.book_list, csv_path)
     # present the menu
     loop= True
     while loop:
         selection = libraryCatalouge.print_menu(library_menu)
         if selection == 1:
-            libraryCatalouge.search_books(book_list)
+            libraryCatalouge.search_books(libraryCatalouge.book_list)
         elif selection == 2:
-            libraryCatalouge.borrow_book(book_list)
+            libraryCatalouge.borrow_book(libraryCatalouge.book_list)
         elif selection == 3:
-            libraryCatalouge.return_book()
+            libraryCatalouge.return_book(libraryCatalouge.book_list)
         elif selection == 0:
             print("--Exit The System-- ")
             libraryCatalouge.save_books()
             print("Good Bye!")
         
     save_path = "./saved_books.csv"
+    libraryCatalouge.save_books(book_list,save_path)
 #calling main function to begin program        
 if __name__ == "__main__":
     main()
