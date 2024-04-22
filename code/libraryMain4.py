@@ -123,7 +123,8 @@ class Library_Catalouge():
         for book_item in book_list:
             genre= str(book_item.get_genre_name())
             print(f"{book_item.get_isbn():<14} {book_item.get_title():<25} {book_item.get_author():<25} {genre:<20} {book_item.get_availability():<20}")
-    #saving the book catalog to a file
+        
+#saving the book catalog to a file
     def save_books(self, book_list, file_path): #Jose
      with open(file_path,'books', newline='', encoding='utf-8') as file:
         writer = csv.writer(books)
@@ -135,10 +136,12 @@ class Library_Catalouge():
 
 def main(): #Mahdi
     library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book"}
-        # set up a list of books
-    book_list = load_books()
+  # set up a list of books
+    Library_Catalouge = Library_Catalouge()
+    book_list = []
     print("Starting the system ...")
     csv_path = input("Enter book catalog filename: ")
+    book_count = libraryCatalouge.load_books(book_list, csv_path)
     libraryCatalouge= Library_Catalouge()
     libraryCatalouge.load_books(book_list, csv_path)
     # present the menu
