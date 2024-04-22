@@ -57,7 +57,7 @@ class Library_Catalouge():
         print("-- Search for books --")
         search_input = input("Enter Search Value: ")
         for book_item in book_list:
-            genre= Book.GENRE_NAME_DICT.get(search_input, '-1')
+            genre= str(book_item.get_genre_name())
             if search_input.lower() in book_item.get_isbn().lower() \
                 or search_input.lower() in book_item.get_title().lower() \
                 or search_input.lower() in book_item.get_author().lower() \
