@@ -117,12 +117,12 @@ class Library_Catalouge():
         title = input("Enter title: ")
         author = input("Enter author name: ")
         idGenre_name = input("Enter the genre: ")
-        idGenre_num= Book.genre_name.get(idGenre_name, '-1')
+        idGenre_num= Book.GENRE_NAME.get(idGenre_name, '-1')
         while idGenre_num == '-1':
             print("Invalid genre. Choices are: Romance, Mystery, Science Fiction, Thriller, " +
                     "Young Adult, Children's Fiction, Self-help, Fantasy, Historical Fiction, Poetry")
             idGenre_name = input("Enter the genre: ")
-            idGenre_num = Book.genre_name.get(idGenre_name, '-1')
+            idGenre_num = Book.GENRE_NAME.get(idGenre_name, '-1')
         
         while self.find_book_by_isbn(isbn) != -1:
             print("A book with that ISBN already exists.")
