@@ -41,14 +41,14 @@ class Library_Catalouge():
     #printing the options menu
     def print_menu(self, library_menu): #Leona
         print("Welcome to the Library\n")
-        print(f"1. {library_menu.get(1)}")
-        print(f"2. {library_menu.get(2)}")
-        print(f"3. {library_menu.get(3)}")
-        print(f"0. {library_menu.get(0)}\n")    
-        selection = int(input("Enter your selection: "))
+        print(f"1. {library_menu.get('1')}")
+        print(f"2. {library_menu.get('2')}")
+        print(f"3. {library_menu.get('3')}")
+        print(f"0. {library_menu.get('0')}\n")    
+        selection = input("Enter your selection: ")
         if selection not in library_menu.keys():
             print("Invalid option. Please try again.")
-            self.print_menu()
+            self.print_menu(library_menu)
         return selection
 
     #searching for a book
@@ -67,27 +67,32 @@ class Library_Catalouge():
             print("No matching books found.")
         else:
             self.print_books(search_result)
-
-    #borrowing a book
-    def borrow_book(book_list): #Leona
-        #should work but need to be tested once find book is programmed 
-        borrow_isbn = int(input("Enter a book ISBN: "))
-        book = find_book_by_isbn(borrow_isbn)
-        if book is not None:
-            print("Book has been borrowed")
-            Book.borrow_it()
+ #borrowing a book
+    def borrow_book(self,book_list): #Leona
+         # input isbn
+        isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
+        index_nbr = self.find_book_by_isbn(book_list, isbn)
+        if index_nbr == -1:
+         print("No book found with that ISBN.")
         else:
-            print("Book not found")
+            # check if book is available
+            if book_list[index_nbr].get_available():
+                # borrow book
+                book_list[index_nbr].borrow_it()
+                print(f"'{book_list[index_nbr].get_title()}' with ISBN {book_list[index_nbr].get_isbn()} successfully borrowed.")
+            else:
+                print(f"'{book_list[index_nbr].get_title()}' with ISBN {book_list[index_nbr].get_isbn()} is not currently available.")
 
     #finding a book by ISBN
-    def find_book_by_isbn(book_list): #Grace
-        if Book.isbn in book_list:
-            return Book
+    def find_book_by_isbn(self,book_list, isbn): #Grace
+        for book_item in book_list:
+            if book_item.get_isbn() == isbn:
+                return book_list.index(book_item)
         else:
-            return ('-1')
+            return (-1)
 
     #returning a book
-    def return_book(book_list): #Jose
+    def return_book(book_list:list): #Jose
         print("Return a book sucessfully called")
         return_isbn = input("Enter a book ISBN to return: ")
         found_book = self.find_book_by_isbn(book_list, return_isbn)
@@ -100,7 +105,7 @@ class Library_Catalouge():
         else:
             print("Book not found")
 
-    #adding a book
+    #adding a book  --- MAKE----
     def add_book(): #Mahdi
         print("Add a book sucessfully called")
 
@@ -133,15 +138,15 @@ class Library_Catalouge():
         print("Book catalog has been saved")
     #main function for program
 
-
+library_menu = {'0':"Exit the system", '1': "Search for a book", '2': "Borrow a book", '3': "Return a book"}
 def main(): #Mahdi
-    library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book"}
+    
   # set up a list of books
-    Library_Catalouge = Library_Catalouge()
+    
     book_list = []
     print("Starting the system ...")
     csv_path = input("Enter book catalog filename: ")
-    book_count = libraryCatalouge.load_books(book_list, csv_path)
+
     libraryCatalouge= Library_Catalouge()
     libraryCatalouge.load_books(book_list, csv_path)
     # present the menu
