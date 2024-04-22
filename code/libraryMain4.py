@@ -15,28 +15,31 @@ from book import Book
 import os
 import csv
 class Library_Catalouge():
+    
+    book_list = []
+    book_count = 0
 
   # loading a list of books from a file
-    def load_books(self, book_list, catalouge): #Grace
-        existence = os.path.exists(catalouge)
-        while not existence:
-          catalouge = input("File not found. Re-enter book catalog filename: ")
-          existence = os.path.exists(catalouge)
-        with open(catalouge, 'r', encoding='utf-8') as catalouge:
-          catalouge_reader = csv.reader(catalouge, delimiter=',')
-          book_count = 0
-          for line in catalouge_reader:
-              isbn = line[0]
-              title = line[1]
-              author = line[2]
-              genre = int(line[3])
-              if line[4] == 'True':
+    def load_books(self, book_list, csv_path): #Grace
+        existence = os.path.exists(csv_path)
+        catalouge = open(csv_path, 'r')
+        while existence == False:
+            csv_path = input("File not found. Re-enter book catalog filename: ")
+            existence = os.path.exists(csv_path)
+        else:
+          for line in catalouge:
+              items = line.rstrip('\n').split(',')
+              isbn = items[0]
+              title = items[1]
+              author = items[2]
+              genre = int(items[3])
+              if items[4] == 'True':
                   availability = True
               else:
                   availability = False
               book_list.append(Book(isbn, title, author, genre, availability))
-              book_count += 1 
-        return book_count
+              self.book_count += 1 
+        
 
     #printing the options menu
     def print_menu(self, library_menu): #Leona
@@ -72,7 +75,7 @@ class Library_Catalouge():
     def borrow_book(book_list): #Leona
         #should work but need to be tested once find book is programmed 
         borrow_isbn = int(input("Enter a book ISBN: "))
-        book = find_book_by_isbn(borrow_isbn)
+        book = self.find_book_by_isbn(borrow_isbn)
         if book is not None:
             print("Book has been borrowed")
             Book.borrow_it()
@@ -137,13 +140,10 @@ class Library_Catalouge():
 def main(): #Mahdi
     library_menu = {0:"Exit the system", 1: "Search for a book", 2: "Borrow a book", 3: "Return a book"}
   # set up a list of books
-    Library_Catalouge = Library_Catalouge()
-    book_list = []
     print("Starting the system ...")
     csv_path = input("Enter book catalog filename: ")
-    book_count = libraryCatalouge.load_books(book_list, csv_path)
     libraryCatalouge= Library_Catalouge()
-    libraryCatalouge.load_books(book_list, csv_path)
+    libraryCatalouge.load_books(Library_Catalouge.book_list, csv_path)
     # present the menu
     loop= True
     while loop:
@@ -153,7 +153,7 @@ def main(): #Mahdi
         elif selection == 2:
             libraryCatalouge.borrow_book(book_list)
         elif selection == 3:
-            libraryCatalouge.return_book()
+            libraryCatalouge.return_book(book_list)
         elif selection == 0:
             print("--Exit The System-- ")
             libraryCatalouge.save_books()
