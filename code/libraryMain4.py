@@ -27,23 +27,25 @@ class Library_Catalouge():
             csv_path = input("File not found. Re-enter book catalog filename: ")
             existence = os.path.exists(csv_path)
         else:
-          for line in catalouge:
-              items = line.rstrip('\n').split(',')
-              isbn = items[0]
-              title = items[1]
-              author = items[2]
-              genre = int(items[3])
-              if items[4] == 'True':
-                  availability = True
-              else:
-                  availability = False
-              book_list.append(Book(isbn, title, author, genre, availability))
-              self.book_count += 1 
+            for line in catalouge:
+                items = line.rstrip('\n').split(',')
+                isbn = items[0]
+                title = items[1]
+                author = items[2]
+                genre = int(items[3])
+                if items[4] == 'True':
+                    availability = True
+                else:
+                    availability = False
+                book_list.append(Book(isbn, title, author, genre, availability))
+                self.book_count += 1 
+        print('Book catalog has been loaded\n')
         
 
     #printing the options menu
     def print_menu(self, library_menu): #Leona
-        print("Welcome to the Library\n")
+        print("Reader's Guild Library - Main menu\n")
+        print('='*30)
         print(f"1. {library_menu.get(1)}")
         print(f"2. {library_menu.get(2)}")
         print(f"3. {library_menu.get(3)}")
@@ -149,11 +151,11 @@ def main(): #Mahdi
     while loop:
         selection = libraryCatalouge.print_menu(library_menu)
         if selection == 1:
-            libraryCatalouge.search_books(book_list)
+            libraryCatalouge.search_books(libraryCatalouge.book_list)
         elif selection == 2:
-            libraryCatalouge.borrow_book(book_list)
+            libraryCatalouge.borrow_book(libraryCatalouge.book_list)
         elif selection == 3:
-            libraryCatalouge.return_book(book_list)
+            libraryCatalouge.return_book(libraryCatalouge.book_list)
         elif selection == 0:
             print("--Exit The System-- ")
             libraryCatalouge.save_books()
