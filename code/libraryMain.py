@@ -96,14 +96,14 @@ class Library_Catalouge():
         print("Return a book sucessfully called")
         return_isbn = input("Enter a book ISBN to return: ")
         found_book = self.find_book_by_isbn(book_list, return_isbn)
-        if found_book is not None:
-            if not found_book.get_available:
-                found_book.return_it()
-                print("Book has been returned")
+        if found_book != -1:
+            if not book_list[found_book].get_available():
+                book_list[found_book].return_it()
+                print(f"'{book_list[found_book].get_title()}' with ISBN {book_list[found_book].get_isbn()} successfully returned.")
             else:
-                print("this book was not borrowed")
+                print(f"'{book_list[found_book].get_title()}' with {book_list[found_book].get_isbn()} is not currently borrowed.")
         else:
-            print("Book not found")
+            print("No book found with that ISBN.")
 
     #adding a book  --- MAKE----
     def add_book(): #Mahdi
