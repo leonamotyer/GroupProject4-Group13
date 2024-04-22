@@ -47,7 +47,7 @@ class Library_Catalouge():
         print(f"0. {library_menu.get('0')}\n")    
         selection = input("Enter your selection: ")
         if selection not in library_menu.keys():
-            print("Invalid option. Please try again.")
+            print("No matching book found. Please try again.")
             self.print_menu(library_menu)
         return selection
 
