@@ -165,7 +165,7 @@ class Library_Catalouge():
                 idGenre_name = 9
         
             
-        while self.find_book_by_isbn(isbn) != -1:
+        while self.find_book_by_isbn(isbn) == -1:
             print("A book with that ISBN already exists.")
             isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
         # add book to book_list
