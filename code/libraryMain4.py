@@ -140,6 +140,8 @@ class Library_Catalouge():
             print("Invalid genre. Choices are: Romance, Mystery, Science Fiction, Thriller, " +
                     "Young Adult, Children's Fiction, Self-help, Fantasy, Historical Fiction, Poetry")
             idGenre_name = input("Enter the genre: ")
+
+            
         else:
             if idGenre_name == 'romance':
                 idGenre_num = 0
@@ -172,7 +174,7 @@ class Library_Catalouge():
         else:
             self.book_list.append(Book(isbn, title, author, idGenre_num, True))
             print(f"'{title}' with ISBN {isbn} successfully added.\n")
-    
+
     #removing a book
     def remove_book(self, book_list): #Jose
         remove_isbn = input("Enter a book ISBN to remove: ")
