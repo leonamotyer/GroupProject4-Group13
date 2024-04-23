@@ -140,8 +140,6 @@ class Library_Catalouge():
             print("Invalid genre. Choices are: Romance, Mystery, Science Fiction, Thriller, " +
                     "Young Adult, Children's Fiction, Self-help, Fantasy, Historical Fiction, Poetry")
             idGenre_name = input("Enter the genre: ")
-
-            
         else:
             if idGenre_name == 'romance':
                 idGenre_num = 0
@@ -164,17 +162,17 @@ class Library_Catalouge():
             elif idGenre_name == 'historical fiction':
                 idGenre_num = 8
             elif idGenre_name == 'poetry':
-                idGenre_num = 9
+                idGenre_name = 9
+
         
             
         while self.find_book_by_isbn(isbn) == -1:
             print("A book with that ISBN already exists.")
             isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
         # add book to book_list
-        else:
-            self.book_list.append(Book(isbn, title, author, idGenre_num, True))
-            print(f"'{title}' with ISBN {isbn} successfully added.\n")
-
+        self.book_list.append(Book(isbn, title, author, idGenre_name, True))
+        print(f"'{title}' with ISBN {isbn} successfully added.\n")
+  
     #removing a book
     def remove_book(self, book_list): #Jose
         remove_isbn = input("Enter a book ISBN to remove: ")
