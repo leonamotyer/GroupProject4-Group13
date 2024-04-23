@@ -169,7 +169,7 @@ class Library_Catalouge():
             print("A book with that ISBN already exists.")
             isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
         # add book to book_list
-        self.book_list.append(Book(isbn, title, author, idGenre_num, True))
+        self.book_list.append(Book(isbn, title, author, idGenre_name, True))
         print(f"'{title}' with ISBN {isbn} successfully added.\n")
   
     #removing a book
