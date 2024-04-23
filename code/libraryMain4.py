@@ -140,39 +140,41 @@ class Library_Catalouge():
             print("Invalid genre. Choices are: Romance, Mystery, Science Fiction, Thriller, " +
                     "Young Adult, Children's Fiction, Self-help, Fantasy, Historical Fiction, Poetry")
             idGenre_name = input("Enter the genre: ")
-            idGenre_num = Book.GENRE_NAME.get(idGenre_name, '-1')
+
+            
         else:
             if idGenre_name == 'romance':
-                idGenre_name = 0
+                idGenre_num = 0
             elif idGenre_name == 'mystery':
-                idGenre_name = 1
+                idGenre_num = 1
             elif idGenre_name == 'science fiction':
-                idGenre_name = 2
+                idGenre_num = 2
             elif idGenre_name == 'thriller':
-                idGenre_name = 3
+                idGenre_num = 3
             elif idGenre_name == 'young adult':
-                idGenre_name = 4
+                idGenre_num = 4
             elif idGenre_name == "childrens fiction":
-                idGenre_name = 5
+                idGenre_num= 5
             elif idGenre_name == 'self-help':
-                idGenre_name = 6
+                idGenre_num = 6
             elif idGenre_name == 'self help':
-                idGenre_name = 6
+                idGenre_num = 6
             elif idGenre_name == 'fantasy':
-                idGenre_name = 7
+                idGenre_num = 7
             elif idGenre_name == 'historical fiction':
-                idGenre_name = 8
+                idGenre_num = 8
             elif idGenre_name == 'poetry':
-                idGenre_name = 9
-            idGenre_num= Book.GENRE_NAME.get(idGenre_name, '-1')
+                idGenre_num = 9
+        
             
-        while self.find_book_by_isbn(isbn) != -1:
+        while self.find_book_by_isbn(isbn) == -1:
             print("A book with that ISBN already exists.")
             isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
         # add book to book_list
-        self.book_list.append(Book(isbn, title, author, idGenre_num, True))
-        print(f"'{title}' with ISBN {isbn} successfully added.\n")
-  
+        else:
+            self.book_list.append(Book(isbn, title, author, idGenre_num, True))
+            print(f"'{title}' with ISBN {isbn} successfully added.\n")
+
     #removing a book
     def remove_book(self, book_list): #Jose
         remove_isbn = input("Enter a book ISBN to remove: ")
