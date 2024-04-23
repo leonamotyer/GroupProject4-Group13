@@ -140,31 +140,29 @@ class Library_Catalouge():
             print("Invalid genre. Choices are: Romance, Mystery, Science Fiction, Thriller, " +
                     "Young Adult, Children's Fiction, Self-help, Fantasy, Historical Fiction, Poetry")
             idGenre_name = input("Enter the genre: ")
-
-            
         else:
             if idGenre_name == 'romance':
-                idGenre_num = 0
+                idGenre_name = 0
             elif idGenre_name == 'mystery':
-                idGenre_num = 1
+                idGenre_name = 1
             elif idGenre_name == 'science fiction':
-                idGenre_num = 2
+                idGenre_name= 2
             elif idGenre_name == 'thriller':
-                idGenre_num = 3
+                idGenre_name = 3
             elif idGenre_name == 'young adult':
-                idGenre_num = 4
+                idGenre_name = 4
             elif idGenre_name == "childrens fiction":
-                idGenre_num= 5
+                idGenre_name= 5
             elif idGenre_name == 'self-help':
-                idGenre_num = 6
+                idGenre_name = 6
             elif idGenre_name == 'self help':
-                idGenre_num = 6
+                idGenre_name = 6
             elif idGenre_name == 'fantasy':
-                idGenre_num = 7
+                idGenre_name = 7
             elif idGenre_name == 'historical fiction':
-                idGenre_num = 8
+                idGenre_name = 8
             elif idGenre_name == 'poetry':
-                idGenre_num = 9
+                idGenre_name = 9
         
             
         while self.find_book_by_isbn(isbn) == -1:
@@ -172,18 +170,19 @@ class Library_Catalouge():
             isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
         # add book to book_list
         else:
-            self.book_list.append(Book(isbn, title, author, idGenre_num, True))
+            self.book_list.append(Book(isbn, title, author, idGenre_name, True))
             print(f"'{title}' with ISBN {isbn} successfully added.\n")
-
+    
     #removing a book
     def remove_book(self, book_list): #Jose
         remove_isbn = input("Enter a book ISBN to remove: ")
-        found_book = self.find_book_by_isbn(book_list, remove_isbn)
-        if found_book is not None:
-            book_list.remove(found_book)
-        else:
-            print("Book not found"), 
-            print("Remove a book sucessfully called")
+        found_book = self.find_book_by_isbn(remove_isbn)
+        for found_book in book_list:
+            if found_book != -1:
+                book_list.remove(found_book)
+                print(f"{self.get_title()} with ISBN {self.get_isbn()} successfully removed")
+            else:
+                print("Book not found"), 
 
     #displaying a list of books
     def print_books(self, book_list:list): #Grace
@@ -226,7 +225,7 @@ def main(): #Leona
             libraryCatalouge.add_book()
             selection = libraryCatalouge.secret_menu(libraryCatalouge.library_menu)
         elif selection == 5:
-            libraryCatalouge.remove_book()
+            libraryCatalouge.remove_book(libraryCatalouge.book_list)
             selection = libraryCatalouge.secret_menu(libraryCatalouge.library_menu)
         elif selection == 6:
             libraryCatalouge.print_books(libraryCatalouge.book_list)
