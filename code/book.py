@@ -33,6 +33,9 @@ class Book:
     def get_genre_name(self):
         return Book.GENRE_NAME.get(self.__genre)
     
+    def get_genre_id(self):
+        return self.__genre
+    
     def get_genre(self):
         return self.__genre
     
@@ -44,6 +47,7 @@ class Book:
             return "Available"
         else:
             return "Borrowed"
+    
         
     #setters
     def set_isbn(self, isbn):
