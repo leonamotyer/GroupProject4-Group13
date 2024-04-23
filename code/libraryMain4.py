@@ -135,14 +135,37 @@ class Library_Catalouge():
         isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
         title = input("Enter title: ")
         author = input("Enter author name: ")
-        idGenre_name = input("Enter the genre: ")
-        idGenre_num= Book.GENRE_NAME.get(idGenre_name, '-1')
-        while idGenre_num == '-1':
+        idGenre_name = input("Enter the genre: ").lower()
+        if idGenre_name not in ('romance', 'mystery', 'science fiction', 'thriller', 'young adult', "childrens fiction", 'self-help','self help', 'fantasy', 'historical fiction', 'poetry'):
             print("Invalid genre. Choices are: Romance, Mystery, Science Fiction, Thriller, " +
                     "Young Adult, Children's Fiction, Self-help, Fantasy, Historical Fiction, Poetry")
             idGenre_name = input("Enter the genre: ")
             idGenre_num = Book.GENRE_NAME.get(idGenre_name, '-1')
-        
+        else:
+            if idGenre_name == 'romance':
+                idGenre_name = 0
+            elif idGenre_name == 'mystery':
+                idGenre_name = 1
+            elif idGenre_name == 'science fiction':
+                idGenre_name = 2
+            elif idGenre_name == 'thriller':
+                idGenre_name = 3
+            elif idGenre_name == 'young adult':
+                idGenre_name = 4
+            elif idGenre_name == "childrens fiction":
+                idGenre_name = 5
+            elif idGenre_name == 'self-help':
+                idGenre_name = 6
+            elif idGenre_name == 'self help':
+                idGenre_name = 6
+            elif idGenre_name == 'fantasy':
+                idGenre_name = 7
+            elif idGenre_name == 'historical fiction':
+                idGenre_name = 8
+            elif idGenre_name == 'poetry':
+                idGenre_name = 9
+            idGenre_num= Book.GENRE_NAME.get(idGenre_name, '-1')
+            
         while self.find_book_by_isbn(isbn) != -1:
             print("A book with that ISBN already exists.")
             isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
