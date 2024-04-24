@@ -1,0 +1,166 @@
+Starting the system ...
+Enter book catalog filename: books.csv             
+Book catalog has been loaded
+
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 1
+-- Search for books --
+Enter Search Value: Homer
+No matching books found.
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 1
+-- Search for books --
+Enter Search Value: Tolkien
+-- Print book catalog --
+ISBN           Title                     Author                    Genre                Availability
+-------------- ------------------------- ------------------------- -------------------- --------------------
+978-0350000000 The Hobbit                J.R.R. Tolkien            Fantasy              Available
+978-0540000000 The Lord of the Rings     J.R.R. Tolkien            Fantasy              Available
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 1
+-- Search for books --
+Enter Search Value: Fiction 
+-- Print book catalog --
+ISBN           Title                     Author                    Genre                Availability
+-------------- ------------------------- ------------------------- -------------------- --------------------
+978-1570000000 The Kite Runner           Khaled Hosseini           Historical Fiction   Available
+978-0760000000 Brave New World           Aldous Huxley             Science Fiction      Available
+978-0450000000 Gone with the Wind        Margaret Mitchell         Historical Fiction   Available
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 1
+-- Search for books --
+Enter Search Value: pride
+-- Print book catalog --
+ISBN           Title                     Author                    Genre                Availability
+-------------- ------------------------- ------------------------- -------------------- --------------------
+978-0140000000 Pride and Prejudice       Jane Austen               Romance              Borrowed
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 2
+Enter a book ISBN in formatt 999-9999999999: 500-1234
+No book found with that ISBN.
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 2
+Enter a book ISBN in formatt 999-9999999999: 978-0140000000
+Pride and Prejudice with ISBN: 978-0140000000  is not available
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 2
+Enter a book ISBN in formatt 999-9999999999: 978-0450000000
+Gone with the Wind with ISBN: 978-0450000000 has been borrowed
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 3
+Return a book sucessfully called
+Enter a book ISBN to return in formatt 999-9999999999: 500-1234
+Book not found with that ISBN
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 3
+Return a book sucessfully called
+Enter a book ISBN to return in formatt 999-9999999999: 978-0760000000
+Brave New World with ISBN: 978-0760000000  is not currently borrowed
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 3
+Return a book sucessfully called
+Enter a book ISBN to return in formatt 999-9999999999: 978-0070000000
+The Chronicles of Narnia with ISBN: 978-0070000000 has been returned
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 4
+Invalid option. Please try again.
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: x
+Invalid option. Please try again.
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 0
+--Exit The System--
+Book catalog has been saved
+Good Bye!
+Book catalog has been saved

@@ -1,0 +1,157 @@
+Starting the system ...
+Enter book catalog filename: bookZZ.csv
+File not found. Re-enter book catalog filename: books.csv
+Book catalog has been loaded
+
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 2131
+Invalid option. Please try again.
+Reader's Guild Library - Main menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+0. Exit the system
+
+Enter your selection: 2130
+Reader's Guild Library - Secret menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+4. Add a book
+5. Remove a book
+6. Print catalog
+0. Exit the system
+
+Enter your selection: 4
+-- Add a book --
+Enter the 13-digit ISBN (format 999-9999999999): 978-0490000000
+Enter title: 1984
+Enter author name: George Orwell
+Enter the genre: Science Fiction
+'1984' with ISBN 978-0490000000 successfully added.
+
+Reader's Guild Library - Secret menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+4. Add a book
+5. Remove a book
+6. Print catalog
+0. Exit the system
+
+Enter your selection: 4
+-- Add a book --
+Enter the 13-digit ISBN (format 999-9999999999): 978-1590000000
+Enter title: Daring Greatly
+Enter author name: Brene Brown
+Enter the genre: Self-help
+'Daring Greatly' with ISBN 978-1590000000 successfully added.
+
+Reader's Guild Library - Secret menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+4. Add a book
+5. Remove a book
+6. Print catalog
+0. Exit the system
+
+Enter your selection: 6
+-- Print book catalog --
+ISBN           Title                     Author                    Genre                Availability
+-------------- ------------------------- ------------------------- -------------------- --------------------
+978-0060000000 To Kill a Mockingbird     Harper Lee                Thriller             Available
+978-0140000000 Pride and Prejudice       Jane Austen               Romance              Borrowed
+978-0320000000 The Catcher in the Rye    J.D. Salinger             Young Adult          Available
+978-0350000000 The Hobbit                J.R.R. Tolkien            Fantasy              Available
+978-1570000000 The Kite Runner           Khaled Hosseini           Historical Fiction   Available
+978-0540000000 The Lord of the Rings     J.R.R. Tolkien            Fantasy              Available
+978-0070000000 The Chronicles of Narnia  C.S. Lewis                Fantasy              Available
+978-0440000000 The Hunger Games          Suzanne Collins           Young Adult          Available
+978-0760000000 Brave New World           Aldous Huxley             Science Fiction      Available
+978-0450000000 Gone with the Wind        Margaret Mitchell         Historical Fiction   Borrowed
+978-0490000000 1984                      George Orwell             Science Fiction      Available
+978-1590000000 Daring Greatly            Brene Brown               Self-help            Available
+Reader's Guild Library - Secret menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+4. Add a book
+5. Remove a book
+6. Print catalog
+0. Exit the system
+
+Enter your selection: 5
+Enter a book ISBN to remove: 500-1234
+No book found with that ISBN
+Reader's Guild Library - Secret menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+4. Add a book
+5. Remove a book
+6. Print catalog
+0. Exit the system
+
+Enter your selection: 5
+Enter a book ISBN to remove: 978-0490000000
+1984 with ISBN 978-0490000000 successfully removed
+Reader's Guild Library - Secret menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+4. Add a book
+5. Remove a book
+6. Print catalog
+0. Exit the system
+
+Enter your selection: 6
+-- Print book catalog --
+ISBN           Title                     Author                    Genre                Availability
+-------------- ------------------------- ------------------------- -------------------- --------------------
+978-0060000000 To Kill a Mockingbird     Harper Lee                Thriller             Available
+978-0140000000 Pride and Prejudice       Jane Austen               Romance              Borrowed
+978-0320000000 The Catcher in the Rye    J.D. Salinger             Young Adult          Available
+978-0350000000 The Hobbit                J.R.R. Tolkien            Fantasy              Available
+978-1570000000 The Kite Runner           Khaled Hosseini           Historical Fiction   Available
+978-0540000000 The Lord of the Rings     J.R.R. Tolkien            Fantasy              Available
+978-0070000000 The Chronicles of Narnia  C.S. Lewis                Fantasy              Available
+978-0440000000 The Hunger Games          Suzanne Collins           Young Adult          Available
+978-0760000000 Brave New World           Aldous Huxley             Science Fiction      Available
+978-0450000000 Gone with the Wind        Margaret Mitchell         Historical Fiction   Borrowed
+978-1590000000 Daring Greatly            Brene Brown               Self-help            Available
+Reader's Guild Library - Secret menu
+
+==============================
+1. Search for a book
+2. Borrow a book
+3. Return a book
+4. Add a book
+5. Remove a book
+6. Print catalog
+0. Exit the system
+
+Enter your selection: 0
+Book catalog has been saved
+PS C:\Users\bruke_upqmxan\OneDrive - Southern Alberta Institute of Technology\Object-Oriented\groupAssignment_04>
