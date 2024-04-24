@@ -147,7 +147,7 @@ class Library_Catalouge():
             print("Book not found with that ISBN")
             
     #adding a book
-    def add_book(self): #Grace
+    def add_book(self): #Grace & Leona
         print("-- Add a book --")
         # input ISBN, title, author, and genre name
         isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
@@ -193,7 +193,7 @@ class Library_Catalouge():
             self.book_list.append(Book(isbn, title, author, idGenre_name, True))
             print(f"'{title}' with ISBN {isbn} successfully added.\n")
     
-    #removing a book
+    #removing a book #Grace & Jose
     def remove_book(self, book_list): #Grace
         remove_isbn = input("Enter a book ISBN to remove: ")
         found_book = self.find_book_by_isbn(remove_isbn)
@@ -205,7 +205,7 @@ class Library_Catalouge():
         else:
             print("No book found with that ISBN")
 
-    #displaying a list of books
+    #displaying a list of books #Grace
     def print_books(self, book_list:list): #Grace
         print('-- Print book catalog --')
         # Iterates through the list of books and prints the information for each book.
@@ -215,7 +215,7 @@ class Library_Catalouge():
             genre= str(book_item.get_genre_name())
             print(f"{book_item.get_isbn():<14} {book_item.get_title():<25} {book_item.get_author():<25} {genre:<20} {book_item.get_availability():<20}")
         
-#saving the book catalog to a file
+#saving the book catalog to a file #Leona
     def save_books(self, book_list, csv_path): #Leona 
         for book in book_list:
             catalouge = open(csv_path, 'a')
