@@ -169,18 +169,19 @@ class Library_Catalouge():
             print("A book with that ISBN already exists.")
             isbn = input("Enter the 13-digit ISBN (format 999-9999999999): ")
         # add book to book_list
-        self.book_list.append(Book(isbn, title, author, idGenre_name, True))
-        print(f"'{title}' with ISBN {isbn} successfully added.\n")
-  
+            self.book_list.append(Book(isbn, title, author, idGenre_name, True))
+            print(f"'{title}' with ISBN {isbn} successfully added.\n")
+
     #removing a book
     def remove_book(self, book_list): #Jose
         remove_isbn = input("Enter a book ISBN to remove: ")
-        found_book = self.find_book_by_isbn(book_list, remove_isbn)
-        if found_book is not None:
-            book_list.remove(found_book)
-        else:
-            print("Book not found"), 
-            print("Remove a book sucessfully called")
+        found_book = self.find_book_by_isbn(remove_isbn)
+        for found_book in book_list:
+            if found_book != -1:
+                book_list.remove(found_book)
+                print(f"{self.get_title()} with ISBN {self.get_isbn()} successfully removed")
+            else:
+                print("Book not found"), 
 
     #displaying a list of books
     def print_books(self, book_list:list): #Grace
@@ -223,7 +224,7 @@ def main(): #Leona
             libraryCatalouge.add_book()
             selection = libraryCatalouge.secret_menu(libraryCatalouge.library_menu)
         elif selection == 5:
-            libraryCatalouge.remove_book()
+            libraryCatalouge.remove_book(libraryCatalouge.book_list)
             selection = libraryCatalouge.secret_menu(libraryCatalouge.library_menu)
         elif selection == 6:
             libraryCatalouge.print_books(libraryCatalouge.book_list)

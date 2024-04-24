@@ -33,7 +33,10 @@ class Book:
     
     def get_genre_name(self):
         return Book.GENRE_NAME_DICT.get(self.__genre)
-    
+
+    def get_genre(self):
+        return self.__genre
+            
     def get_available(self):
         return self.__availability
 
