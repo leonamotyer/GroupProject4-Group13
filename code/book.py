@@ -32,7 +32,6 @@ class Book:
         return self.__author
     
     def get_genre_name(self):
-
         return Book.GENRE_NAME_DICT.get(self.__genre)
 
     def get_genre(self):
@@ -41,7 +40,6 @@ class Book:
     def get_available(self):
         return self.__availability
 
-    
     def get_available(self):
         return self.__availability
     
@@ -61,8 +59,7 @@ class Book:
         
     def set_author(self, author):
         self.__author = author
-
-        
+  
     def set_genre(self, genre_id):
        self.__genre = genre_id
         
