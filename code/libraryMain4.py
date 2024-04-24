@@ -142,28 +142,27 @@ class Library_Catalouge():
             idGenre_name = input("Enter the genre: ")
         else:
             if idGenre_name == 'romance':
-                idGenre_num = 0
+                idGenre_name = 0
             elif idGenre_name == 'mystery':
-                idGenre_num = 1
+                idGenre_name = 1
             elif idGenre_name == 'science fiction':
-                idGenre_num = 2
+                idGenre_name = 2
             elif idGenre_name == 'thriller':
-                idGenre_num = 3
+                idGenre_name = 3
             elif idGenre_name == 'young adult':
-                idGenre_num = 4
+                idGenre_name = 4
             elif idGenre_name == "childrens fiction":
-                idGenre_num= 5
+                idGenre_name = 5
             elif idGenre_name == 'self-help':
-                idGenre_num = 6
+                idGenre_name = 6
             elif idGenre_name == 'self help':
-                idGenre_num = 6
+                idGenre_name = 6
             elif idGenre_name == 'fantasy':
-                idGenre_num = 7
+                idGenre_name = 7
             elif idGenre_name == 'historical fiction':
-                idGenre_num = 8
+                idGenre_name = 8
             elif idGenre_name == 'poetry':
                 idGenre_name = 9
-
         
             
         while self.find_book_by_isbn(isbn) == -1:
